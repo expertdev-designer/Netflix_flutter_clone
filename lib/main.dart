@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_flutter/Content_categories/home_page_view.dart';
+import 'package:netflix_clone_flutter/user_profile/email_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: HomePageView(),
+      home: EmailScreen(),
     );
   }
 }

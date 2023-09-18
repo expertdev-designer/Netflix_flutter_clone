@@ -1,5 +1,6 @@
 class AppStrings {
   static const search = "Search";
+  static const home = "Home";
   static const game = "Game";
   static const new_hot = "New & Hot";
   static const my_netflix = "My Netflix";
@@ -11,6 +12,7 @@ class AppStrings {
   static const only_on_netflix = "Only on Netflix";
   static const play = "Play";
   static const my_list = "My List";
+  static const my_list_arrow = "My List >";
   // static const game = "Games";
   static const tv_show = "TV Shows";
   static const movie = "Movies";
@@ -20,4 +22,19 @@ class AppStrings {
   static const top = "Top";
   static const ten = "10";
   static const new_season = "New Season";
+  static const vikings = "Vikings: Valhalla";
+  static const strategy = "Strategy";
+
+  static const ready_to_watch = "Ready to watch?";
+  static const enter_your_email = "Enter your email to create or sign in to your account";
+  static const email = "Email";
+  static const get_started = "GET STARTED";
+
+  static const natflix = "NATFLIX";
+  static const email_or_password = "Email or phone number";
+  static const password = "Password";
+  static const signIn = "Sign In";
+  static const need_help = "Need help?";
+  static const new_to_natflix = "New to Natflix? Sign up now.";
+  static const signin_protected_by = "Sign in is protected by Google reCaptcha to ensure you’re not a bot. Learn more";
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,16 +20,16 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
-
      bottomNavigationBar: BottomNavigationBar(
        currentIndex: _currentIndex,
        backgroundColor: Colors.black,
-       selectedFontSize: 14.0,
-       selectedIconTheme: IconThemeData(color: Colors.black),
+       selectedFontSize: 12.0,
+       selectedIconTheme: IconThemeData(color: Colors.white),
+       unselectedIconTheme: IconThemeData(color: Colors.grey),
        unselectedFontSize: 12.0,
-       selectedLabelStyle: TextStyle(color: Colors.white),
-       unselectedLabelStyle: TextStyle(color: Colors.grey),
        type: BottomNavigationBarType.fixed,
+       selectedItemColor: Colors.white,
+       unselectedItemColor:  Colors.grey,
        onTap: (index) {
          setState(() {
            _currentIndex = index;
@@ -36,17 +38,19 @@ class _HomePageViewState extends State<HomePageView> {
        items: [
          BottomNavigationBarItem(
            icon: SvgPicture.asset(
-             AppImages.search,
+             AppImages.home_icon,
              width: 24,
              height: 24,
+             color: _currentIndex == 0 ? Colors.white : Colors.grey,
            ),
-           label: AppStrings.search,
+           label: AppStrings.home,
          ),
          BottomNavigationBarItem(
            icon: SvgPicture.asset(
              AppImages.game,
              width: 24,
              height: 24,
+             color: _currentIndex == 1 ? Colors.white : Colors.grey,
            ),
            label: AppStrings.game,
          ),
@@ -55,6 +59,7 @@ class _HomePageViewState extends State<HomePageView> {
              AppImages.new_hot,
              width: 24,
              height: 24,
+             color: _currentIndex == 2 ? Colors.white : Colors.grey,
            ),
            label: AppStrings.new_hot,
          ),
@@ -68,20 +73,54 @@ class _HomePageViewState extends State<HomePageView> {
          ),
        ],
      ),
+       body: NestedScrollView(
+   //  extendBodyBehindAppBar: false,
 
-     appBar: AppBar(
-       backgroundColor: AppColors.green_black,
-       title: SvgPicture.asset(
-         AppImages.netflix_logo,
-         height: 30,
-       ),
-       actions: [
-         Padding(
-           padding: const EdgeInsets.only(bottom:5,right: 20),
-           child: SvgPicture.asset(AppImages.search),
-         ),
-       ],
-     ),
+         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+           return <Widget>[
+             SliverAppBar(
+               backgroundColor: innerBoxIsScrolled
+                   ? Colors.black.withOpacity(0.7)
+                   : AppColors.green_black,
+               expandedHeight: 50.0,
+               floating: false,
+               pinned: true,
+               automaticallyImplyLeading: false,
+               title: SvgPicture.asset(
+                 AppImages.netflix_logo,
+                 height: 30,
+               ),
+                 actions: [
+                   Padding(
+                     padding: const EdgeInsets.only(bottom:5,right: 20),
+                     child: SvgPicture.asset(AppImages.search),
+                   ),
+                 ],
+             ),
+           ];
+         },
+
+
+     // appBar: AppBar(
+     //   flexibleSpace: ClipRect(
+     //     child: BackdropFilter(
+     //       filter: ImageFilter.blur(sigmaX: 10,sigmaY: 10),
+     //       child: Container(
+     //           color: Colors.transparent),
+     //     ),
+     //   ),
+     //   backgroundColor: AppColors.green_black,
+     //   title: SvgPicture.asset(
+     //     AppImages.netflix_logo,
+     //     height: 30,
+     //   ),
+     //   actions: [
+     //     Padding(
+     //       padding: const EdgeInsets.only(bottom:5,right: 20),
+     //       child: SvgPicture.asset(AppImages.search),
+     //     ),
+     //   ],
+     // ),
 
      body:Column(
        children: [
@@ -89,7 +128,7 @@ class _HomePageViewState extends State<HomePageView> {
            child: Container(
            width: double.infinity,
            height: 756,
-           decoration: BoxDecoration(
+           decoration: const BoxDecoration(
              gradient: LinearGradient(
                begin: Alignment.topCenter,
                end: Alignment.bottomCenter,
@@ -101,67 +140,64 @@ class _HomePageViewState extends State<HomePageView> {
                child: Column(
                  children:<Widget> [
                    Container(
-                     margin: EdgeInsets.only(left: 20,right: 20),
+                     margin: EdgeInsets.only(left: 10,right: 30),
                      height: 80,
-                     child: SingleChildScrollView(
-                       scrollDirection: Axis.horizontal,
-                       child: Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                         children: [
-                           CustomButton(
-                             label: AppStrings.tv_show,
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                       children: [
+                         CustomButton(
+                           label: AppStrings.tv_show,
 
-                             onPressed: () {
-                               //  click logic
-                             },
-                             color: AppColors.white.withOpacity(0.3),
-                             width: 120.0,
-                             height: 40.0,
-                             borderRadius: 20.0,
-                             labelStyle: TextStyle(
-                               color: AppColors.white,
-                               fontSize: 15.0,
-                               fontWeight: FontWeight.w400,
-                             ),
+                           onPressed: () {
+                             //  click logic
+                           },
+                          // color: AppColors.white.withOpacity(0.3),
+                           width: 95.0,
+                           height: 40.0,
+                           borderRadius: 20.0,
+                           labelStyle: TextStyle(
+                             color: AppColors.white,
+                             fontSize: 15.0,
+                             fontWeight: FontWeight.w400,
                            ),
-                           CustomButton(
-                             label: AppStrings.movie,
-                             onPressed: () {
-                               //  click logic
-                             },
-                             color: AppColors.white.withOpacity(0.3),
-                             width: 120.0,
-                             height: 40.0,
-                             borderRadius: 20.0,
-                             labelStyle: TextStyle(
-                               color: AppColors.white,
-                               fontSize: 15.0,
-                               fontWeight: FontWeight.bold,
-                             ),
+                         ),
+                         CustomButton(
+                           label: AppStrings.movie,
+                           onPressed: () {
+                             //  click logic
+                           },
+                           // color: AppColors.white.withOpacity(0.3),
+                           width: 80.0,
+                           height: 40.0,
+                           borderRadius: 20.0,
+                           labelStyle: TextStyle(
+                             color: AppColors.white,
+                             fontSize: 15.0,
+                             fontWeight: FontWeight.w400,
                            ),
-                           CustomButton(
-                             label: AppStrings.categories,
-                             onPressed: () {
-                               //  click logic
-                             },
-                             color: AppColors.white.withOpacity(0.8),
-                             width: 130.0,
-                             height: 40.0,
-                             borderRadius: 20.0,
-                             labelStyle: TextStyle(
-                               color: AppColors.white,
-                               fontSize: 15.0,
-                               fontWeight: FontWeight.bold,
-                             ),
-                           )
-                         ],
-                       ),
+                         ),
+                         CustomButton(
+                           label: AppStrings.categories,
+                           onPressed: () {
+                             //  click logic
+                           },
+                           // color: AppColors.white.withOpacity(0.3),
+                           width: 100.0,
+                           height: 40.0,
+                           borderRadius: 20.0,
+                           labelStyle: TextStyle(
+                             color: AppColors.white,
+                             fontSize: 15.0,
+                             fontWeight: FontWeight.w400,
+                           ),
+                         )
+                       ],
                      ),
 
                    ),
                    Card(
                      elevation: 4,
-                     margin: EdgeInsets.all(20.0),
+                     margin: EdgeInsets.all(15.0),
                      color: AppColors.green_black.withOpacity(0.09),
                      child: Stack(
                        children: [
@@ -183,31 +219,59 @@ class _HomePageViewState extends State<HomePageView> {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: [
                                AppText(
-                                 text: AppStrings.indian,
+                                 text: AppStrings.rousing,
                                  fontSize: 13,
                                  fontWeight: FontWeight.bold,
-                                 color: AppColors.white.withOpacity(0.5),
+                                 color: AppColors.white.withOpacity(0.7),
                                ),
-                               SizedBox(width: 20,),
+                               SizedBox(width: 5,),
+                               Text(
+                                 "•",
+                                 style: TextStyle(
+                                   color: AppColors.dot_color.withOpacity(0.7),
+                                   fontSize: 25,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                               SizedBox(width: 5,),
                                AppText(
                                  text: AppStrings.emotional,
                                  fontSize: 13,
                                  fontWeight: FontWeight.bold,
-                                 color: AppColors.white.withOpacity(0.5),
+                                 color: AppColors.white.withOpacity(0.7),
                                ),
-                               SizedBox(width: 20,),
+                               SizedBox(width: 5,),
+                               Text(
+                                 "•",
+                                 style: TextStyle(
+                                   color: AppColors.dot_color.withOpacity(0.7),
+                                   fontSize: 25,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                               SizedBox(width: 5,),
+
                                AppText(
                                  text: AppStrings.corruption,
                                  fontSize: 13,
                                  fontWeight: FontWeight.bold,
-                                 color: AppColors.white.withOpacity(0.5),
+                                 color: AppColors.white.withOpacity(0.7),
                                ),
-                               SizedBox(width: 20,),
+                               SizedBox(width: 5,),
+                               Text(
+                                 "•",
+                                 style: TextStyle(
+                                   color: AppColors.dot_color.withOpacity(0.7),
+                                   fontSize: 25,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                               ),
+                               SizedBox(width: 5,),
                                AppText(
                                  text: AppStrings.indian,
                                  fontSize: 13,
                                  fontWeight: FontWeight.bold,
-                                 color: AppColors.white.withOpacity(0.5),
+                                 color: AppColors.white.withOpacity(0.7),
                                ),
                              ],
                            ),
@@ -277,8 +341,8 @@ class _HomePageViewState extends State<HomePageView> {
                        children: [
                          AppText(
                            text: AppStrings.only_on_netflix,
-                           fontSize: 24,
-                           fontWeight: FontWeight.w500,
+                           fontSize: 20,
+                           fontWeight: FontWeight.bold,
                            color: AppColors.white,
 
                          ),
@@ -290,7 +354,7 @@ class _HomePageViewState extends State<HomePageView> {
 
 
                    Container(
-                     margin: EdgeInsets.only(left: 8, right: 20),
+                     margin: EdgeInsets.only(left: 8, ),
                      height: 362,
                      child: ListView.builder(
                        scrollDirection: Axis.horizontal,
@@ -327,14 +391,14 @@ class _HomePageViewState extends State<HomePageView> {
                                          children: [
                                            AppText(
                                              text: AppStrings.top,
-                                             fontSize: 10,
+                                             fontSize: 15,
                                              fontWeight: FontWeight.bold,
                                              color: AppColors.white,
 
                                            ),
                                            AppText(
                                              text: AppStrings.ten,
-                                             fontSize: 10,
+                                             fontSize: 15,
                                              fontWeight: FontWeight.bold,
                                              color: AppColors.white,
                                            ),
@@ -381,8 +445,8 @@ class _HomePageViewState extends State<HomePageView> {
                        children: [
                          AppText(
                            text: AppStrings.trending,
-                           fontSize: 24,
-                           fontWeight: FontWeight.w500,
+                           fontSize: 20,
+                           fontWeight: FontWeight.bold,
                            color: AppColors.white,
 
                          ),
@@ -392,7 +456,7 @@ class _HomePageViewState extends State<HomePageView> {
                    ),
 
                    Container(
-                     margin: EdgeInsets.only(left: 8, right: 20),
+                     margin: EdgeInsets.only(left: 8, ),
                      height: 166,
                      child: ListView.builder(
                        scrollDirection: Axis.horizontal,
@@ -415,11 +479,37 @@ class _HomePageViewState extends State<HomePageView> {
                                  ),
                                ),
                                Positioned(
-                                 top: 300,
-                                 left: 20,
-                                 child: Container(
+                                   top: 0,
+                                   left: 80,
+                                   right: 0,
+                                   child: Container(
+                                     width: 40,
+                                     height: 30,
+                                     child: ClipPath(
+                                       clipper: RoundedTriangleClipper(),
+                                       child: Container(
+                                         color: Colors.red,
+                                         child: Column(
+                                           children: [
+                                             AppText(
+                                               text: AppStrings.top,
+                                               fontSize: 10,
+                                               fontWeight: FontWeight.bold,
+                                               color: AppColors.white,
 
-                                 ),
+                                             ),
+                                             AppText(
+                                               text: AppStrings.ten,
+                                               fontSize: 10,
+                                               fontWeight: FontWeight.bold,
+                                               color: AppColors.white,
+                                             ),
+                                           ],
+                                         ),
+                                       ),
+                                     ),
+                                   )
+
                                ),
                                Positioned(
                                  bottom: 0,
@@ -450,16 +540,21 @@ class _HomePageViewState extends State<HomePageView> {
                    ),
 
                    Container(
-                     margin: EdgeInsets.only(left: 20),
+                     margin: EdgeInsets.only(left: 20,right: 15),
                      child: Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        children: [
                          AppText(
                            text: AppStrings.game,
-                           fontSize: 24,
-                           fontWeight: FontWeight.w500,
+                           fontSize: 20,
+                           fontWeight: FontWeight.bold,
                            color: AppColors.white,
-
+                         ),
+                         AppText(
+                           text: AppStrings.my_list_arrow,
+                           fontSize: 20,
+                           fontWeight: FontWeight.bold,
+                           color: AppColors.white,
                          ),
                        ],
 
@@ -467,8 +562,8 @@ class _HomePageViewState extends State<HomePageView> {
                    ),
 
                    Container(
-                     margin: EdgeInsets.only(left: 8, right: 20),
-                     height: 166,
+                     margin: EdgeInsets.only(left: 8, ),
+                     height: 170,
                      child: ListView.builder(
                        scrollDirection: Axis.horizontal,
                        itemCount: items.length,
@@ -476,29 +571,34 @@ class _HomePageViewState extends State<HomePageView> {
                          return Container(
                            margin: EdgeInsets.all(5.0),
                            color: AppColors.green_black.withOpacity(0.09),
-                           child: Stack(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
-                               ClipRRect(
-                                 borderRadius: BorderRadius.circular(10.0),
-                                 child: Container(
-                                   width: 117,
-                                   height: 166,
-                                   child: Image.asset(
-                                     AppImages.lake_img,
-                                     fit: BoxFit.cover,
+                             ClipRRect(
+                                   borderRadius: BorderRadius.circular(10.0),
+                                   child: Container(
+                                     width: 119,
+                                     height: 119,
+                                     child: Image.asset(
+                                       AppImages.lake_img,
+                                       fit: BoxFit.cover,
+                                     ),
                                    ),
                                  ),
+                               SizedBox(height: 2,),
+                               AppText(
+                                 text: AppStrings.vikings,
+                                 fontSize: 13,
+                                 fontWeight: FontWeight.w500,
+                                 color: AppColors.white,
                                ),
-                               Positioned(
-                                 top: 300,
-                                 left: 20,
-                                 child: Container(),
-                               ),
-                               Positioned(
-                                 top: 340,
-                                 left: 0,
-                                 right: 0,
-                                 child: Container(),
+                               SizedBox(height: 2,),
+                               AppText(
+                                 text: AppStrings.strategy,
+                                 fontSize: 12,
+                                 fontWeight: FontWeight.w400,
+                                 color: AppColors.white,
+
                                ),
                              ],
                            ),
@@ -517,6 +617,7 @@ class _HomePageViewState extends State<HomePageView> {
          ),
        ],
      ),
+       ),
    );
   }
 
@@ -551,35 +652,34 @@ class _HomePageViewState extends State<HomePageView> {
   Widget CustomButton({
     required String label,
     VoidCallback? onPressed,
-    Color color = Colors.white,
+    //Color color = Colors.transparent,
      double width= double.infinity,
      double height  = 50.0,
      double borderRadius = 8.0,
     TextStyle? labelStyle,
     Color borderColor = Colors.white,
+    double borderWidth = 1.0,
   }){
 
-    return SizedBox(
+    return Container(
       width: width,
       height: height,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          primary: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
-            side: BorderSide(color: borderColor),
-          ),
-        ),
-        child: Text(
-          label,
-          style: labelStyle ?? TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+      decoration: BoxDecoration(
+        //color: color,
+        borderRadius: BorderRadius.circular(borderRadius),
+        border: Border.all(color: borderColor,width: borderWidth),
       ),
+        child: Container(
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: labelStyle ?? TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
     );
 
   }

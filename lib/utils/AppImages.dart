@@ -13,4 +13,5 @@ class AppImages{
   static const dummy_img2 = "assets/images/dummy_img2.png";
   static const dummy_nature= "assets/images/dummy_nature.png";
   static const lake_img= "assets/images/lake_img.png";
+  static const home_icon = "assets/images/home_icon.svg";
 }
