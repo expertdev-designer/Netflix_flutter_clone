@@ -37,4 +37,19 @@ class AppStrings {
   static const need_help = "Need help?";
   static const new_to_natflix = "New to Natflix? Sign up now.";
   static const signin_protected_by = "Sign in is protected by Google reCaptcha to ensure you’re not a bot. Learn more";
+
+  static const privacy = "PRIVACY";
+  static const SIGN_IN = "SIGN IN";
+  static const unlimited_entertainment = "Unlimited entertainment, one low price";
+  static const all_of_netrlix = "All of Netflix, starting at just";
+  static const rs149 = "149";
+
+  static const top_pick = "Top Picks for You";
+  static const coming_soon = "Coming Soon";
+  static const ua = "U/A 16+";
+  static const series = "S E R I E S";
+  static const one_piece = "ONE PIECE";
+  static const adventure = "Adventure";
+  static const visually_striking = "Visually Striking";
+  // static const
 }

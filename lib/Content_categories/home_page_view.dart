@@ -9,6 +9,8 @@ import 'package:netflix_clone_flutter/utils/AppColors.dart';
 import 'package:netflix_clone_flutter/utils/AppImages.dart';
 import 'package:netflix_clone_flutter/utils/AppStrings.dart';
 
+import 'new_hot_screen.dart';
+
 class HomePageView extends StatefulWidget{
   @override
   State<HomePageView> createState() => _HomePageViewState();
@@ -17,6 +19,7 @@ class HomePageView extends StatefulWidget{
 class _HomePageViewState extends State<HomePageView> {
   final List<String> items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
   int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -34,6 +37,15 @@ class _HomePageViewState extends State<HomePageView> {
          setState(() {
            _currentIndex = index;
          });
+         if (index == 2) {
+           Navigator.push(
+             context,
+             MaterialPageRoute(
+               builder: (context) =>
+                   NewHotScreen(),
+             ),
+           );
+         }
        },
        items: [
          BottomNavigationBarItem(

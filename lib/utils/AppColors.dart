@@ -10,4 +10,5 @@ class AppColors {
   static const text_color_grey = Color(0xff5A5A5A);
   static const red_dark = Color(0xffEC0610);
   static const dark_grey = Color(0xff333333);
+  static const light_black = Color(0xff161616);
 }

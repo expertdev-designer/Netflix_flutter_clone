@@ -14,4 +14,12 @@ class AppImages{
   static const dummy_nature= "assets/images/dummy_nature.png";
   static const lake_img= "assets/images/lake_img.png";
   static const home_icon = "assets/images/home_icon.svg";
+  static const dummy_img3 = "assets/images/dummy_img3.png";
+  static const dummy_img4 = "assets/images/dummy_img4.png";
+  static const rs_sign = "assets/images/rs_sign.png";
+  static const cast_logo = "assets/images/cast_logo.png";
+  static const view_more_icon = "assets/images/view_more_icon.png";
+  static const cast_logo_svg = "assets/images/cast_logo_svg.svg";
+  static const view_more_svg = "assets/images/view_more_svg.svg";
+  static const info = "assets/images/Info.svg";
 }
