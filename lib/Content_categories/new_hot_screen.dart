@@ -14,6 +14,11 @@ class NewHotScreen extends StatefulWidget{
 class _NewHotScreenState extends State<NewHotScreen> {
   final List<String> items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
   bool isButtonPressed = false;
+  int isSelected = -1;
+
+  bool isTopPickButtonPressed = false;
+  bool isComingSoonButtonPressed = false;
+  bool isGameButtonPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +63,18 @@ class _NewHotScreenState extends State<NewHotScreen> {
                             label: AppStrings.top_pick,
                             onPressed: () {
                               setState(() {
-                                isButtonPressed = !isButtonPressed;
+                                //isButtonPressed = !isButtonPressed;
+                                isTopPickButtonPressed = !isTopPickButtonPressed;
                               });
                               //  click logic
                             },
                             width: 140.0,
                             height: 40.0,
                             borderRadius: 20.0,
-                            backgroundColor: isButtonPressed ? Colors.white : Colors.transparent,
+                            backgroundColor: isTopPickButtonPressed ? Colors.white : Colors.transparent,
                             borderColor: AppColors.white,
                             labelStyle: TextStyle(
-                              color: isButtonPressed ? AppColors.black : AppColors.white,
+                              color: isTopPickButtonPressed ? AppColors.black : AppColors.white,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -77,17 +83,18 @@ class _NewHotScreenState extends State<NewHotScreen> {
                             label: AppStrings.coming_soon,
                             onPressed: () {
                               setState(() {
-                                isButtonPressed = !isButtonPressed;
+                                //isButtonPressed = !isButtonPressed;
+                                isComingSoonButtonPressed = !isComingSoonButtonPressed;
                               });
                               //  click logic
                             },
                             width: 110.0,
                             height: 40.0,
                             borderRadius: 20.0,
-                            backgroundColor: isButtonPressed ? Colors.white : Colors.transparent,
+                            backgroundColor: isComingSoonButtonPressed ? Colors.white : Colors.transparent,
                             borderColor: AppColors.white,
                             labelStyle: TextStyle(
-                              color: isButtonPressed ? AppColors.black : AppColors.white,
+                              color: isComingSoonButtonPressed ? AppColors.black : AppColors.white,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -95,14 +102,17 @@ class _NewHotScreenState extends State<NewHotScreen> {
                           CustomButton(
                             label: AppStrings.game,
                             onPressed: () {
-                              //  click logic
+                              setState(() {
+                                isGameButtonPressed = !isGameButtonPressed;
+                              });
                             },
                             width: 60.0,
                             height: 40.0,
                             borderRadius: 20.0,
                             borderColor: AppColors.white,
+                            backgroundColor: isGameButtonPressed ? Colors.white : Colors.transparent,
                             labelStyle: TextStyle(
-                              color: AppColors.white,
+                              color: isGameButtonPressed ? AppColors.black : AppColors.white,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -418,7 +428,7 @@ class _NewHotScreenState extends State<NewHotScreen> {
                                               )
                                             ],
                                           ),
-                                        )
+                                        ),
 
                                       ],
                                     ),

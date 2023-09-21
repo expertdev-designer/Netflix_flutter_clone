@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflix_clone_flutter/user_profile/email_screen.dart';
 import 'package:netflix_clone_flutter/utils/AppColors.dart';
 import 'package:netflix_clone_flutter/utils/AppImages.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../utils/AppStrings.dart';
+import 'email_screen.dart';
 
 
 class GetStartedScreen extends StatefulWidget{

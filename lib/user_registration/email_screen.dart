@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone_flutter/Content_categories/home_page_view.dart';
-import 'package:netflix_clone_flutter/user_profile/signIn_screen.dart';
+import 'package:netflix_clone_flutter/user_registration/signIn_screen.dart';
 // import 'package:pretty_textfield/pretty_textfield.dart';
 
 import '../utils/AppColors.dart';

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone_flutter/content_search_and%20_filter/search_screen.dart';
+import 'package:netflix_clone_flutter/user_registration/find_help.dart';
 import 'package:netflix_clone_flutter/utils/AppColors.dart';
 import 'package:netflix_clone_flutter/utils/AppImages.dart';
 import 'package:netflix_clone_flutter/utils/AppStrings.dart';
@@ -43,6 +45,14 @@ class _HomePageViewState extends State<HomePageView> {
              MaterialPageRoute(
                builder: (context) =>
                    NewHotScreen(),
+             ),
+           );
+         }else if(index == 3){
+           Navigator.push(
+             context,
+             MaterialPageRoute(
+               builder: (context) =>
+                   FindHelpOnline(),
              ),
            );
          }
@@ -105,7 +115,13 @@ class _HomePageViewState extends State<HomePageView> {
                  actions: [
                    Padding(
                      padding: const EdgeInsets.only(bottom:5,right: 20),
-                     child: SvgPicture.asset(AppImages.search),
+                     child: InkWell(
+                       onTap: (){
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
+                       },
+                         child: SvgPicture.asset(AppImages.search
+                         ),
+                     ),
                    ),
                  ],
              ),
@@ -335,11 +351,9 @@ class _HomePageViewState extends State<HomePageView> {
                                          fontSize: 14,
                                          fontWeight: FontWeight.w500,
                                          color: AppColors.white,
-
                                        ),
                                      ],
                                    ),
-
                                  ),
                                ],
                              ))
@@ -356,10 +370,8 @@ class _HomePageViewState extends State<HomePageView> {
                            fontSize: 20,
                            fontWeight: FontWeight.bold,
                            color: AppColors.white,
-
                          ),
                        ],
-
                      ),
                    ),
 
@@ -618,8 +630,6 @@ class _HomePageViewState extends State<HomePageView> {
                        },
                      ),
                    ),
-
-
 
                  ],
            ),

@@ -22,4 +22,23 @@ class AppImages{
   static const cast_logo_svg = "assets/images/cast_logo_svg.svg";
   static const view_more_svg = "assets/images/view_more_svg.svg";
   static const info = "assets/images/Info.svg";
+
+  static const call_icon = "assets/images/call_icon.svg";
+  static const login_icon = "assets/images/login_icon.svg";
+  static const paper_icon = "assets/images/paper_icon.svg";
+  static const security_icon = "assets/images/security_icon.svg";
+  static const terms_of_use_icon = "assets/images/terms_of_use_icon.svg";
+  static const tool_icon = "assets/images/tool_icon.svg";
+  static const edit_icon = "assets/images/edit_icon.svg";
+  static const my_netflix_profile = "assets/images/my_netflix_profile.svg";
+
+  static const children_text = "assets/images/children.svg";
+  static const children_bg_img = "assets/images/children_bg_img.svg";
+  static const profile_img_green = "assets/images/profile_img_green.svg";
+  static const children_text_png = "assets/images/children.png";
+
+  static const blue_box = "assets/images/blue_box.svg";
+  static const green_box = "assets/images/green_box.svg";
+  static const red_box = "assets/images/red_box.svg";
+  static const play_img = "assets/images/Play.png";
 }
